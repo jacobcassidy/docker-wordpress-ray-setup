@@ -1,4 +1,9 @@
 <?php
+/**
+ * Global Ray package settings for communicating between Docker server and Ray desktop app
+ *
+ * @package Global Ray
+ */
 
 return [
     /*
