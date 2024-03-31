@@ -21,6 +21,9 @@ services:
       - ./html:/var/www/html
       - ./log:/var/www/log
       - ./ray.php:/var/www/ray.php
+    networks:
+      - nginx-proxy-network
+      - backend
     depends_on:
       - db
   db:
@@ -35,8 +38,10 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - ${DB_PORT}:3306
+    networks:
+      - backend
 
 networks:
-  default:
-    name: ${PROXY_NETWORK_NAME}
+  nginx-proxy-network:
     external: true
+  backend:
